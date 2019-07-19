@@ -1,14 +1,26 @@
 <template>
   <v-toolbar fixed class="cyan" dark>
-    <v-toolbar-side-icon></v-toolbar-side-icon>
+    <!-- <v-toolbar-side-icon></v-toolbar-side-icon> -->
       <v-toolbar-title class ="mr-4">
-        IBM Brasil - Customer Relationship Manager
+        <span
+        class="home"
+        @click="navigateTo({ name: 'root' })">
+        CRM
+        </span>
       </v-toolbar-title>
     <v-spacer></v-spacer>
     <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn flat
+        <v-btn
+          v-if="!$store.state.isUserLoggedIn"
+          flat
+          @click="navigateTo({ name: 'login' })">
+          Login
+        </v-btn>
+        <v-btn
+          v-if="!$store.state.isUserLoggedIn"
+          flat
           @click="navigateTo({ name: 'register' })">
-            Signup
+            Sign Up
         </v-btn>
       <v-btn flat>Link Two</v-btn>
       <v-btn flat>Link Three</v-btn>
@@ -28,4 +40,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.home {
+  cursor: pointer;
+}
+.home:hover {
+  color: black;
+}
 </style>
