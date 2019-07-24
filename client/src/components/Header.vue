@@ -8,22 +8,35 @@
         CRM
         </span>
       </v-toolbar-title>
+        <v-btn
+          flat
+          dark
+          @click="navigateTo({ name: 'songs' })">
+          Browse
+        </v-btn>
     <v-spacer></v-spacer>
     <v-toolbar-items class="hidden-sm-and-down">
         <v-btn
           v-if="!$store.state.isUserLoggedIn"
           flat
+          dark
           @click="navigateTo({ name: 'login' })">
           Login
         </v-btn>
         <v-btn
           v-if="!$store.state.isUserLoggedIn"
           flat
+          dark
           @click="navigateTo({ name: 'register' })">
             Sign Up
         </v-btn>
-      <v-btn flat>Link Two</v-btn>
-      <v-btn flat>Link Three</v-btn>
+        <v-btn
+          v-if="$store.state.isUserLoggedIn"
+          flat
+          dark
+          @click="logout">
+            Log Out
+        </v-btn>
     </v-toolbar-items>
   </v-toolbar>
 </template>
@@ -33,6 +46,11 @@ export default {
   methods: {
     navigateTo (route) {
       this.$router.push(route)
+    },
+    logout () {
+      this.$store.dispatch('setToken', null)
+      this.$store.dispatch('setUser', null)
+      this.$router.push({ name: 'root' })
     }
   }
 }
