@@ -5,7 +5,7 @@
           <v-btn
             slot="action"
             @click="navigateTo({name: 'songs-create'})"
-            class="cyan accent-2"
+            class="white"
             light
             small
             absolute
@@ -34,13 +34,11 @@
               <v-btn
                 dark
                 class="cyan"
-                @click="navigateTo({ 
-                  name: 'song',
-                  params: { 
-                    songId: song.id 
-                  }
-                })">
-                View
+                @click="navigateTo({name: 'song', params: {
+                  songId: song.id
+                }
+              })">
+              View
               </v-btn>
             </v-flex>
             <v-flex xs6>
