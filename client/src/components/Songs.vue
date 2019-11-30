@@ -1,51 +1,13 @@
 <template>
   <v-layout>
-    <v-flex xs6 offset-xs3>
-      <panel title="Songs">
-          <v-btn
-            slot="action"
-            @click="navigateTo({name: 'songs-create'})"
-            class="white"
-            light
-            small
-            absolute
-            right
-            middle
-            fab>
-            <v-icon>add</v-icon>
-          </v-btn>
-
-        <div
-        v-for="song in songs"
-        class="song"
-        :key="song.id">
-
-          <v-layout>
-            <v-flex xs6>
-              <div class="song-title">
-                {{ song.title }}
-              </div>
-              <div class="song-artist">
-                {{ song.artist }}
-              </div>
-              <div class="song-genre">
-                {{ song.genre }}
-              </div>
-              <v-btn
-                dark
-                class="cyan"
-                @click="navigateTo({name: 'song', params: {
-                  songId: song.id
-                }
-              })">
-              View
-              </v-btn>
-            </v-flex>
-            <v-flex xs6>
-              <img class="album-image" :src="song.albumImage">
-            </v-flex>
-          </v-layout>
-        </div>
+    <v-flex xs6 offset-xs3 v-if="$store.state.isUserLoggedIn">
+      <panel title="Acesso autorizado">
+        Você está logado e tem acesso completo ao conteúdo dessa página.
+      </panel>
+    </v-flex>
+    <v-flex xs6 offset-xs3 v-if="!$store.state.isUserLoggedIn">
+      <panel title="Acesso negado">
+        Você precisa estar logado para acessar ao conteúdo dessa página.
       </panel>
     </v-flex>
   </v-layout>
@@ -75,22 +37,7 @@ export default {
 </script>
 
 <style scoped>
-.song {
-  padding: 20px;
-  height: 330px;
-  overflow: hidden;
-}
-.song-title {
-  font-size: 30px;
-}
-.song-artist {
-  font-size: 24px;
-}
-.song-image {
-  font-size: 18px;
-}
-.album-image {
-  width: 70%;
-  margin: 0 auto;
+.element {
+  background-color: green;
 }
 </style>

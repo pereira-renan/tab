@@ -1,7 +1,7 @@
 <template>
   <v-layout>
     <v-flex xs6 offset-xs3>
-      <panel title="Register">
+      <panel title="Login">
           <v-text-field
             label="Email"
             v-model="email"
@@ -17,7 +17,7 @@
           <br>
           <v-btn
             dark
-            class="cyan"
+            class="red"
             @click="login">
             Login
           </v-btn>
@@ -46,6 +46,7 @@ export default {
         })
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setUser', response.data.user)
+        this.$router.push({ name: 'songs' })
       } catch (error) {
         this.error = error.response.data.error
       }
@@ -60,6 +61,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .error {
-  color: red
+  background-color: #ffffff !important;
+  color: red;
 }
 </style>

@@ -7,6 +7,7 @@ function hashPassword (user, options) {
   if (!user.changed('password')) {
     return
   }
+  console.log('hashPassword')
 
   return bcrypt
     .genSaltAsync(SALT_FACTOR)
