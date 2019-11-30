@@ -37,8 +37,8 @@ import Panel from '@/components/Panel'
 export default {
   data () {
     return {
-      email: 'gg@gmail.com',
-      password: '12345678',
+      email: '',
+      password: '',
       error: null
     }
   },
@@ -65,6 +65,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .error {
-  color: red
+  background-color: #ffffff !important;
+  color: red;
 }
 </style>

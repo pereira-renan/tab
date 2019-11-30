@@ -32,8 +32,8 @@ import Panel from '@/components/Panel'
 export default {
   data () {
     return {
-      email: 'gg@gmail.com',
-      password: '12345678',
+      email: 'teste@fatec.com.br',
+      password: '',
       error: null
     }
   },
